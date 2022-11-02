@@ -1,9 +1,7 @@
 "use strict";
 
-const events = require("./events.js");
-
-require("./system.js");
-require("./pilot.js");
+const io = require("socket.io-client");
+const socket = io(process.env.PORT || "http://localhost:4000");
 
 const { faker } = require("@faker-js/faker");
 const { v4: uuidv4 } = require("uuid");
@@ -22,9 +20,9 @@ setInterval(() => {
   };
 
   console.log(`Manager: new flight with ID ${flightDetails.flightID} have been scheduled`);
-  events.emit("new-flight", flightDetails);
+  socket.emit("new-flight", flightDetails);
 }, 10000);
 
-events.on("arrived", (flightDetails) => {
+socket.on("arrived", (flightDetails) => {
   console.log(`Manager: we’re greatly thankful for the amazing flight, ${flightDetails.pilot}`);
 });

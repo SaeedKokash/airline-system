@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/SaeedKokash/airline-system#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
