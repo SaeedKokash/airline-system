@@ -8,7 +8,7 @@ const socket = io(process.env.PORT || "http://localhost:4000");
 socket.on("new-flight", (flightDetails) => {
   setTimeout(() => {
     console.log(`Pilot: flight with ID ${flightDetails.flightID} took-off`);
-    airlineSocket.emit("take-off", flightDetails);
+    airlineSocket.emit("took-off", flightDetails);
   }, 4000);
 
   setTimeout(() => {
